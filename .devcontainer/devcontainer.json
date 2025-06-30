@@ -15,7 +15,7 @@
       ]
     }
   },
-  "postCreateCommand": "pip install --upgrade pip && pip install streamlit pandas",
+  "postCreateCommand": "pip install --upgrade pip && pip install streamlit pandas python-binance",
   "postAttachCommand": {
     "server": "streamlit run claratrade_web_painel.py --server.enableCORS false --server.enableXsrfProtection false"
   },
