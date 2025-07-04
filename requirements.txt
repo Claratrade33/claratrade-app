@@ -1,0 +1,6 @@
+flask
+python-binance
+requests
+pytz
+pandas
+flask_cors
