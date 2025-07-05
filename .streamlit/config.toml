@@ -1,4 +1,6 @@
-[server]
-headless = true
-port = 10000
-enableCORS = false
+[theme]
+primaryColor="#6c33a3"
+backgroundColor="#fff8fc"
+secondaryBackgroundColor="#f2eaf8"
+textColor="#2a003f"
+font="sans serif"
