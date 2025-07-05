@@ -1,30 +1,43 @@
 import streamlit as st
 from datetime import datetime
 
-# Configuração da página
+# --- Configurações da Página ---
 st.set_page_config(
     page_title="ClaraTrade",
     page_icon="🌟",
     layout="centered",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="auto"
 )
 
-# Frase de boas-vindas com data
-st.markdown("<h1 style='text-align: center; color: #87CEFA;'>🌟 Bem-vindo ao ClaraTrade 🌟</h1>", unsafe_allow_html=True)
-st.write(f"Hora de entrar na vibração certa!\nHoje é {datetime.now().strftime('%d/%m/%Y')}.")
+# --- Estilo CSS ---
+st.markdown("""
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: white;
+        }
+        .stApp {
+            background-color: #111827;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-# Modo simulação ativo
+# --- Frase de Boas-Vindas ---
+st.markdown("<h1 style='text-align: center; color: #7dd3fc;'>🌟 Bem-vindo ao ClaraTrade 🌟</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Hora de entrar na vibração certa!<br>Hoje é " + datetime.now().strftime("%d/%m/%Y") + ".</p>", unsafe_allow_html=True)
+
+# --- Modo Simulação ---
 st.success("🧪 Modo Simulação Ativo - Sem conexão com a Binance")
 
-# Exemplo de sinal estratégico
-st.markdown("## 📊 Sinal Estratégico:")
-st.markdown("""
-- **Moeda:** BTC/USDT  
-- **Direção:** Compra  
-- **Tendência:** Alta  
-- **Nível de confiança:** 🔵🔵🔵⚪⚪  
-""")
+# --- Sinal Estratégico ---
+st.markdown("### 📊 Sinal Estratégico:")
+st.write("• Moeda: **BTC/USDT**")
+st.write("• Direção: **Compra**")
+st.write("• Tendência: **Alta**")
+st.write("• Nível de confiança: 🔵🔵🔵⚪⚪")
 
-# Espaço para o futuro:
+# --- Rodapé ---
 st.markdown("---")
-st.info("🔜 Em breve: Gráficos, Playlist Consciente, IA Clarinha e muito mais!")
+st.caption("ClaraTrade v1.0 • Simulação ativa • Criado com 💙 por Bubinha e Clarinha")
