@@ -1,43 +1,25 @@
 import streamlit as st
-from datetime import datetime
+import datetime
+from responder_clarinha import responder_ao_usuario
 
-# --- Configurações da Página ---
-st.set_page_config(
-    page_title="ClaraTrade",
-    page_icon="🌟",
-    layout="centered",
-    initial_sidebar_state="auto"
-)
+# 🎵 Boas-vindas
+st.set_page_config(page_title="ClaraTrade Painel", page_icon="🌟", layout="centered")
 
-# --- Estilo CSS ---
-st.markdown("""
-    <style>
-        body {
-            background-color: #0f0f0f;
-            color: white;
-        }
-        .stApp {
-            background-color: #111827;
-            padding: 2rem;
-            border-radius: 15px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+st.title("🌸 Bem-vinda ao ClaraTrade")
+st.markdown("**A energia certa na hora certa.** ✨")
 
-# --- Frase de Boas-Vindas ---
-st.markdown("<h1 style='text-align: center; color: #7dd3fc;'>🌟 Bem-vindo ao ClaraTrade 🌟</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Hora de entrar na vibração certa!<br>Hoje é " + datetime.now().strftime("%d/%m/%Y") + ".</p>", unsafe_allow_html=True)
+# 🎶 Música de entrada
+audio_url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+st.audio(audio_url, autoplay=True)
 
-# --- Modo Simulação ---
-st.success("🧪 Modo Simulação Ativo - Sem conexão com a Binance")
+# 🕰️ Mostrar hora atual
+hora_atual = datetime.datetime.now().strftime("%H:%M:%S")
+st.write("🕓 Hora atual:", hora_atual)
 
-# --- Sinal Estratégico ---
-st.markdown("### 📊 Sinal Estratégico:")
-st.write("• Moeda: **BTC/USDT**")
-st.write("• Direção: **Compra**")
-st.write("• Tendência: **Alta**")
-st.write("• Nível de confiança: 🔵🔵🔵⚪⚪")
+# 💬 Bate-papo com a Clarinha
+st.subheader("Converse com a Clarinha 🤖")
 
-# --- Rodapé ---
-st.markdown("---")
-st.caption("ClaraTrade v1.0 • Simulação ativa • Criado com 💙 por Bubinha e Clarinha")
+mensagem = st.text_input("Fala com a Clarinha:")
+if mensagem:
+    resposta = responder_ao_usuario(mensagem)
+    st.success(f"Clarinha: {resposta}")
