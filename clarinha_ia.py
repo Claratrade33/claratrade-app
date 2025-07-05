@@ -1,15 +1,9 @@
 def responder_ao_usuario(mensagem):
-    mensagem = mensagem.lower()
-
-    if "oi" in mensagem or "olá" in mensagem:
-        return "Oiê, eu sou a Clarinha 💜. Como posso te ajudar hoje?"
-    elif "sinal" in mensagem:
-        return "O sinal estratégico de hoje será enviado às 08h, 14h e 20h."
-    elif "ajuda" in mensagem:
-        return "Claro, é só me chamar! Estou aqui pra facilitar seu caminho."
-    elif "obrigado" in mensagem or "valeu" in mensagem:
-        return "Imagina, estamos juntas nessa jornada! ✨"
-    elif "você está aí" in mensagem or "tá aí" in mensagem:
-        return "Sempre aqui, só esperando você chamar 💫"
+    if "sinal" in mensagem.lower():
+        return "🟢 ClaraTrade diz: sinal detectado! Prepare-se para entrar!"
+    elif "tô triste" in mensagem.lower():
+        return "💛 Clarinha: respira fundo, alma linda. Tudo vai passar."
+    elif "opera por mim" in mensagem.lower():
+        return "🤖 Clara: Ok! Entrando em modo automático com carinho e firmeza."
     else:
-        return "Não entendi bem… tenta de novo com outras palavras 💭"
+        return "✨ Clarinha aqui. Me diga como posso te ajudar agora."
