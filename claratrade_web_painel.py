@@ -1,5 +1,5 @@
 import streamlit as st
-from responder_clarinha import responder_ao_usuario
+from clarinha_ia import responder_ao_usuario
 
 st.set_page_config(page_title="ClaraTrade", layout="wide")
 
