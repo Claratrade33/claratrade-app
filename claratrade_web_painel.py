@@ -1,27 +1,29 @@
 import streamlit as st
-from clarinha_ia import responder_ao_usuario
+import random
+from estrategia_basica import gerar_sinal_simulado
 
-st.set_page_config(page_title="ClaraTrade", layout="wide")
+# Configuração da página
+st.set_page_config(page_title="ClaraTrade Painel", layout="wide")
 
-# Mensagem de entrada
-st.markdown("## 🌟 Bem-vinda, alma linda!")
-st.success("🎶 Sinta essa vibração: você está no ClaraTrade. Tudo aqui está em ressonância com o seu sucesso.")
+# Título da aplicação
+st.title("🌟 ClaraTrade - Painel de Simulação")
 
-# Simulador de saldo fictício
-saldo = 92.00
-st.metric("💰 Saldo simulado (USDT)", f"${saldo:.2f}")
+# Saldo simulado
+st.markdown("### 💰 Saldo simulado:")
+saldo = round(random.uniform(80, 150), 2)
+st.success(f"{saldo} USDT disponíveis")
 
-# Chat com a IA Clarinha
+# Estratégia simulada
 st.markdown("---")
-st.markdown("### 💬 Converse com a Clarinha:")
+st.markdown("### 📊 Sinal de operação sugerido")
 
-mensagem = st.text_input("Digite algo para a IA Clarinha:")
-if mensagem:
-    resposta = responder_ao_usuario(mensagem)
-    st.info(resposta)
+sinal = gerar_sinal_simulado(saldo)
+st.write(f"**Moeda:** {sinal['moeda']}")
+st.write(f"**Direção:** {sinal['direcao']}")
+st.write(f"**Entrada:** {sinal['preco_entrada']} USDT")
+st.write(f"**Alvo:** 🎯 {sinal['alvo']} USDT")
+st.write(f"**Stop:** ❌ {sinal['stop']} USDT")
 
-# Modo simulado ativado
+# Espaço reservado para mais funcionalidades...
 st.markdown("---")
-st.warning("🔁 Modo Simulação ativado - Nenhuma operação real será feita na Binance.")
-
-st.markdown("##### 🌈 Painel operando em sintonia com a sua intenção.")
+st.info("Mais recursos em breve... painel de controle, gráficos, IA Clarinha e muito mais!")
