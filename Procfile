@@ -1,1 +1,1 @@
-web: streamlit run claratrade_web_painel.py --server.port=$PORT --server.enableCORS=false
+web: streamlit run claratrade_web_painel.py
