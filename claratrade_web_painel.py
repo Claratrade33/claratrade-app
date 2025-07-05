@@ -1,58 +1,34 @@
-# ClaraTrade – Painel Web com Login e Conexão Binance
+
 import streamlit as st
+import time
 from datetime import datetime
-import pandas as pd
-from binance.client import Client
 
-# ==== LOGIN ====
-usuarios = {
-    "clarinha": "alma123",
-    "admin": "mar333"
-}
+st.set_page_config(page_title="ClaraTrade Painel", layout="wide")
 
-st.set_page_config(page_title="ClaraTrade Sinais", layout="wide")
-st.title("📈 ClaraTrade – Painel de Sinais")
+# Simulação de saldo e informações
+saldo_simulado = {"asset": "USDT", "free": "92.00"}
+hora_atual = datetime.now().strftime("%H:%M:%S")
 
-# ==== SIDEBAR LOGIN ====
-with st.sidebar:
-    st.header("🔐 Login")
-    usuario = st.text_input("Usuário")
-    senha = st.text_input("Senha", type="password")
-    entrar = st.button("Entrar")
+st.markdown("<h1 style='text-align: center;'>🌀 ClaraTrade Sinais – Modo Simulação</h1>", unsafe_allow_html=True)
+st.info("🚨 Painel operando em modo visual/simulação. Nenhuma conexão real com a Binance foi feita.")
 
-# ==== API BINANCE ====
-API_KEY = "j4RmAOeesRTSoQYy2b0g3hsuZiQrTB4fw6iVMJmRm94ixrJMk56VbDLHjZYqw2sV"
-API_SECRET = "Xe2qHFZb6UpfxIOBNcmWbmGKLuoxUYTfRnUGbsnTXMdu3nRZaoVTbPD0T47w6xgU"
-client = Client(API_KEY, API_SECRET)
+col1, col2 = st.columns(2)
 
-# ==== APP PRINCIPAL ====
-if entrar:
-    if usuario in usuarios and usuarios[usuario] == senha:
-        st.success(f"Bem-vinda, {usuario}! 🌬️")
+with col1:
+    st.subheader("📈 Simulação de Saldo USDT")
+    st.metric("Saldo disponível", f"${saldo_simulado['free']}", "+0.00")
+    st.caption("Atualizado em: " + hora_atual)
 
-        # Preço atual BTC
-        try:
-            preco_btc = float(client.get_symbol_ticker(symbol="BTCUSDT")["price"])
-            st.metric(label="💰 Preço atual do BTC", value=f"${preco_btc:,.2f}")
-        except Exception as e:
-            st.error("Erro ao conectar com Binance: " + str(e))
+with col2:
+    st.subheader("📡 Status de conexão")
+    st.success("Simulação ativa")
+    st.caption("Integração com Binance desativada temporariamente.")
 
-        # Alertas fictícios por enquanto
-        st.subheader("🔔 Alertas Ativos")
-        st.info("BTC está com tendência de alta. Deseja uma sugestão de entrada com controle de risco?")
-        st.info("Os ventos estão a favor 🌬️. Dá uma olhadinha nas velas, e vamos pegar essa maré!")
+st.markdown("---")
 
-        # Histórico de sinais
-        st.subheader("📊 Histórico de Sinais")
-        dados = pd.DataFrame([
-            {"Moeda": "BTCUSDT", "Direção": "Alta", "Variação": "+3.42%", "Hora": "08:00"},
-            {"Moeda": "PEPEUSDT", "Direção": "Queda", "Variação": "-5.13%", "Hora": "07:30"}
-        ])
-        st.dataframe(dados, use_container_width=True)
-
-        st.subheader("🌙 Mensagens Espirituosas")
-        st.success("☀️ Bom dia! Que hoje as ondas do mercado tragam boas oportunidades e luz para suas decisões.")
-    else:
-        st.error("Usuário ou senha incorretos. Tente novamente.")
-else:
-    st.warning("Por favor, faça login para acessar os sinais.")
+st.subheader("🔍 Próximos passos")
+st.markdown("""
+- ✅ Interface visual carregada
+- 🔁 Aguardando ativação da API real para operações
+- 🧠 Inteligência Clarinha pronta para acoplamento
+""")
